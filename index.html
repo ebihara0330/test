@@ -69,20 +69,22 @@
 <iframe id="myIframe" src="assets/Storylinehtml/story.html"></iframe>
 
 <script>
-  var iframe = document.getElementById('myIframe');
+var iframe = document.getElementById('myIframe');
 
-  iframe.onload = function() {
-    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    var contentBody = innerDoc.body;
+iframe.onload = function() {
+  var innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
 
-   alert(contentBody.scrollWidth );
-    // コンテンツの幅と高さに iframe の高さと幅を合わせる
-    var contentWidth = contentBody.scrollWidth || contentBody.offsetWidth;
-    var contentHeight = contentBody.scrollHeight || contentBody.offsetHeight;
-    iframe.style.width = contentWidth + 'px';
-    iframe.style.height = contentHeight + 'px';
-  };
+  // Access and modify the CSS of the iframe content
+  var contentBody = innerDoc.body;
+  contentBody.style.height = '640px'; // Set the height to 640px
+  contentBody.style.width = '360px'; // Set the width to 360px
+  alert(contentBody.style.height);
+}
 </script>
+
+        <br><br>
+<a href="assets/Storylinehtml/story.html" target="_blank">Open Storyline File</a>
+
 
       <!-- JQuery scripts -->
         <script src="assets/js/jquery-1.11.2.min.js"></script>
