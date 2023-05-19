@@ -61,17 +61,29 @@
             </div>
           </div>
         </div>
-        <a href="assets/Storyline/story.html" target="_blank">Story(HTML5)を開く</a>
         <br><br>
-        <iframe src="assets/Storyline/story.html" width="640" height="360"></iframe>
+
+      <iframe id="myIframe" src="assets/Storylinehtml/story.html" style="width:100%; border: none;"></iframe>
         <br><br>
-        <video width="640" height="360" controls>
-          <source src="assets/MP4/mov_hts-samp003.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <br><br>
-        <br><br>
-  
+
+<iframe id="myIframe" src="assets/Storylinehtml/story.html"></iframe>
+
+<script>
+  var iframe = document.getElementById('myIframe');
+
+  iframe.onload = function() {
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var contentBody = innerDoc.body;
+
+   alert(contentBody.scrollWidth );
+    // コンテンツの幅と高さに iframe の高さと幅を合わせる
+    var contentWidth = contentBody.scrollWidth || contentBody.offsetWidth;
+    var contentHeight = contentBody.scrollHeight || contentBody.offsetHeight;
+    iframe.style.width = contentWidth + 'px';
+    iframe.style.height = contentHeight + 'px';
+  };
+</script>
+
       <!-- JQuery scripts -->
         <script src="assets/js/jquery-1.11.2.min.js"></script>
   
