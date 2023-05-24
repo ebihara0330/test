@@ -63,29 +63,6 @@
         </div>
         <br><br>
 
-      <iframe id="myIframe" src="assets/Storylinehtml/story.html" style="width:100%; border: none;"></iframe>
-        <br><br>
-
-<iframe id="myIframe" src="assets/Storylinehtml/story.html"></iframe>
-
-<script>
-var iframe = document.getElementById('myIframe');
-
-iframe.onload = function() {
-  var innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
-
-  // Access and modify the CSS of the iframe content
-  var contentBody = innerDoc.body;
-  contentBody.style.height = '640px'; // Set the height to 640px
-  contentBody.style.width = '360px'; // Set the width to 360px
-  alert(contentBody.style.height);
-}
-</script>
-
-        <br><br>
-<a href="assets/Storylinehtml/story.html" target="_blank">Open Storyline File</a>
-
-
       <!-- JQuery scripts -->
         <script src="assets/js/jquery-1.11.2.min.js"></script>
   
