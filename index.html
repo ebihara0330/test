@@ -67,7 +67,7 @@
         <canvas id="pdfViewer"></canvas>
 
             <script>
-      pdfjsLib.getDocument('assets\Test.pdf').promise.then((pdf) => {
+      pdfjsLib.getDocument('assets/Test.pdf').promise.then((pdf) => {
         console.log('PDF loaded');
 
         pdf.getPage(1).then((page) => {
