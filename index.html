@@ -69,21 +69,23 @@
 
         <div id="pdfViewer" class="pdfViewer"></div>
         <script>
-          const url = 'assets/Test.pdf';
+          document.addEventListener('DOMContentLoaded', function() {
+            const url = 'assets/Test.pdf';
     
-          const pdfjsViewer = window['pdfjs-dist/web/pdf_viewer'];
-          const pdfjsLib = window['pdfjs-dist/build/pdf'];
+            const pdfjsViewer = window['pdfjs-dist/web/pdf_viewer'];
+            const pdfjsLib = window['pdfjs-dist/build/pdf'];
     
-          // The workerSrc property shall be specified.
-          pdfjsLib.GlobalWorkerOptions.workerSrc =
-            'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+            // The workerSrc property shall be specified.
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+              'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
     
-          const loadingTask = pdfjsLib.getDocument(url);
-          loadingTask.promise.then((pdf) => {
-            // Initialize PDFViewer
-            const pdfViewer = new pdfjsViewer.PDFViewer({
-              container: document.getElementById('pdfViewer'),
-              pdfDocument: pdf
+            const loadingTask = pdfjsLib.getDocument(url);
+            loadingTask.promise.then((pdf) => {
+              // Initialize PDFViewer
+              const pdfViewer = new pdfjsViewer.PDFViewer({
+                container: document.getElementById('pdfViewer'),
+                pdfDocument: pdf
+              });
             });
           });
         </script>
