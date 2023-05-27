@@ -2,7 +2,9 @@
   <!DOCTYPE html>
   <html lang="en">
     <head>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+      <link rel="stylesheet" href="https://mozilla.github.io/pdf.js/web/pdf_viewer.css">
+      <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+      <script src="https://mozilla.github.io/pdf.js/web/pdf_viewer.js"></script>
       <meta charset="utf-8">
       <title>Page title - Sitename</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +28,7 @@
         <script src="assets/js/respond.min.js"></script>
       <![endif]-->
     </head>
+
     <body>
   
       <!-- Navigation -->
@@ -63,33 +66,28 @@
           </div>
         </div>
         <br><br>
-        
-        <canvas id="pdfViewer"></canvas>
 
-            <script>
-      pdfjsLib.getDocument('assets/Test.pdf').promise.then((pdf) => {
-        console.log('PDF loaded');
+        <div id="pdfViewer" class="pdfViewer"></div>
+        <script>
+          const url = 'assets/Test.pdf';
+    
+          const pdfjsViewer = window['pdfjs-dist/web/pdf_viewer'];
+          const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    
+          // The workerSrc property shall be specified.
+          pdfjsLib.GlobalWorkerOptions.workerSrc =
+            'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    
+          const loadingTask = pdfjsLib.getDocument(url);
+          loadingTask.promise.then((pdf) => {
+            // Initialize PDFViewer
+            const pdfViewer = new pdfjsViewer.PDFViewer({
+              container: document.getElementById('pdfViewer'),
+              pdfDocument: pdf
+            });
+          });
+        </script>
 
-        pdf.getPage(1).then((page) => {
-          const scale = 1.5;
-          const viewport = page.getViewport({ scale });
-
-          const canvas = document.getElementById('pdfViewer');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-
-          const renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-
-          page.render(renderContext);
-        });
-      });
-    </script>
-
-<embed src='assets\Test.pdf' type="application/pdf" width="100%" height="500px">
 
       <!-- JQuery scripts -->
         <script src="assets/js/jquery-1.11.2.min.js"></script>
