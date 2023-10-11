@@ -1,1 +1,30 @@
-hello world!!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Demo</title>
+</head>
+
+<body>
+
+    <!-- ログアウトボタン -->
+    <button id="logoutButton">ログアウト</button>
+
+    <script>
+        /*
+         * ログアウト処理
+         * ログアウトボタン選択後のログアウト処理を定義する
+         * なお、logoutの動作はstaticwebapps.jsonの機能で制御する
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                window.location.href = "/.auth/logout?post_logout_redirect_uri=/index.html";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
